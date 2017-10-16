@@ -9,7 +9,7 @@
 import Foundation
 
 func Mac() -> String {
-	var serial = ASI_CopyFormattedSerialNumber().takeUnretainedValue() as String
+	var serial = ASI_CopyFormattedSerialNumber() as String
 	serial = String(serial.suffix(4))
 	guard let url = URL(string: "http://support-sp.apple.com/sp/product?cc=\(serial)&lang=en_US") else {
 		return ""
@@ -55,7 +55,7 @@ func majorVersion(ofVersion version: String) -> String {
 }
 
 func macOS() -> String {
-	let versionDictionary = _CFCopySystemVersionDictionary().takeUnretainedValue() as NSDictionary
+	let versionDictionary = _CFCopySystemVersionDictionary() as NSDictionary
 	guard let version = versionDictionary["ProductVersion"] as? String,
 		let build = versionDictionary["ProductBuildVersion"] as? String,
 		let name = macOSVersions[majorVersion(ofVersion: version)] else {
@@ -66,7 +66,7 @@ func macOS() -> String {
 }
 
 func Xcode() -> String {
-	let toolsInfo = DVTToolsInfo()
+	let toolsInfo = DVTToolsInfo.toolsInfo()
 	let version = toolsInfo.toolsVersion.name()
 	let build = toolsInfo.toolsBuildVersion.name()
 	return "Xcode Version \(version) \(toolsInfo.isBeta ? "beta\(toolsInfo.toolsBetaVersion != 0 ? " \(toolsInfo.toolsBetaVersion)" : "") " : "")(\(build))"

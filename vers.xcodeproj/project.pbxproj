@@ -7,99 +7,76 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		49536B771F5768FD004BA117 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49536B761F5768FD004BA117 /* main.swift */; };
-		49536B821F57692E004BA117 /* AppleSystemInfo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49536B811F57692E004BA117 /* AppleSystemInfo.framework */; };
-		49536B841F57693A004BA117 /* Seeding.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49536B831F57693A004BA117 /* Seeding.framework */; };
-		49536B8B1F577415004BA117 /* DVTFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49536B871F5772E6004BA117 /* DVTFoundation.framework */; };
-		49536B8C1F577427004BA117 /* DVTFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49536B851F5772C8004BA117 /* DVTFoundation.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
-		49536B8D1F577D10004BA117 /* vers in CopyFiles */ = {isa = PBXBuildFile; fileRef = 49536B731F5768FD004BA117 /* vers */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		493EBA1A1F94163900E0D7BE /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 493EBA191F94163900E0D7BE /* main.swift */; };
+		493EBA211F94312600E0D7BE /* Headers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 493EBA201F94312600E0D7BE /* Headers.swift */; };
+		493EBA231F9432D300E0D7BE /* vers in CopyFiles */ = {isa = PBXBuildFile; fileRef = 493EBA161F94163900E0D7BE /* vers */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		49536B711F5768FD004BA117 /* CopyFiles */ = {
+		493EBA141F94163900E0D7BE /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 12;
 			dstPath = /usr/local/bin;
 			dstSubfolderSpec = 0;
 			files = (
-				49536B8D1F577D10004BA117 /* vers in CopyFiles */,
+				493EBA231F9432D300E0D7BE /* vers in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		49536B731F5768FD004BA117 /* vers */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = vers; sourceTree = BUILT_PRODUCTS_DIR; };
-		49536B761F5768FD004BA117 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
-		49536B7D1F576916004BA117 /* vers-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "vers-Bridging-Header.h"; sourceTree = "<group>"; };
-		49536B811F57692E004BA117 /* AppleSystemInfo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppleSystemInfo.framework; path = ../../../../System/Library/PrivateFrameworks/AppleSystemInfo.framework; sourceTree = "<group>"; };
-		49536B831F57693A004BA117 /* Seeding.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Seeding.framework; path = ../../../../System/Library/PrivateFrameworks/Seeding.framework; sourceTree = "<group>"; };
-		49536B851F5772C8004BA117 /* DVTFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DVTFoundation.framework; path = "../../../../Applications/Xcode-beta.app/Contents/SharedFrameworks/DVTFoundation.framework"; sourceTree = "<group>"; };
-		49536B871F5772E6004BA117 /* DVTFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DVTFoundation.framework; path = ../../../../Applications/Xcode.app/Contents/SharedFrameworks/DVTFoundation.framework; sourceTree = "<group>"; };
+		493EBA161F94163900E0D7BE /* vers */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = vers; sourceTree = BUILT_PRODUCTS_DIR; };
+		493EBA191F94163900E0D7BE /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		493EBA201F94312600E0D7BE /* Headers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Headers.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		49536B701F5768FD004BA117 /* Frameworks */ = {
+		493EBA131F94163900E0D7BE /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				49536B821F57692E004BA117 /* AppleSystemInfo.framework in Frameworks */,
-				49536B841F57693A004BA117 /* Seeding.framework in Frameworks */,
-				49536B8C1F577427004BA117 /* DVTFoundation.framework in Frameworks */,
-				49536B8B1F577415004BA117 /* DVTFoundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		49536B6A1F5768FD004BA117 = {
+		493EBA0D1F94163900E0D7BE = {
 			isa = PBXGroup;
 			children = (
-				49536B751F5768FD004BA117 /* vers */,
-				49536B741F5768FD004BA117 /* Products */,
-				49536B801F57692E004BA117 /* Frameworks */,
+				493EBA181F94163900E0D7BE /* vers */,
+				493EBA171F94163900E0D7BE /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		49536B741F5768FD004BA117 /* Products */ = {
+		493EBA171F94163900E0D7BE /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				49536B731F5768FD004BA117 /* vers */,
+				493EBA161F94163900E0D7BE /* vers */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		49536B751F5768FD004BA117 /* vers */ = {
+		493EBA181F94163900E0D7BE /* vers */ = {
 			isa = PBXGroup;
 			children = (
-				49536B761F5768FD004BA117 /* main.swift */,
-				49536B7D1F576916004BA117 /* vers-Bridging-Header.h */,
+				493EBA191F94163900E0D7BE /* main.swift */,
+				493EBA201F94312600E0D7BE /* Headers.swift */,
 			);
 			path = vers;
-			sourceTree = "<group>";
-		};
-		49536B801F57692E004BA117 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				49536B871F5772E6004BA117 /* DVTFoundation.framework */,
-				49536B851F5772C8004BA117 /* DVTFoundation.framework */,
-				49536B831F57693A004BA117 /* Seeding.framework */,
-				49536B811F57692E004BA117 /* AppleSystemInfo.framework */,
-			);
-			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		49536B721F5768FD004BA117 /* vers */ = {
+		493EBA151F94163900E0D7BE /* vers */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 49536B7A1F5768FD004BA117 /* Build configuration list for PBXNativeTarget "vers" */;
+			buildConfigurationList = 493EBA1D1F94163900E0D7BE /* Build configuration list for PBXNativeTarget "vers" */;
 			buildPhases = (
-				49536B6F1F5768FD004BA117 /* Sources */,
-				49536B701F5768FD004BA117 /* Frameworks */,
-				49536B711F5768FD004BA117 /* CopyFiles */,
+				493EBA121F94163900E0D7BE /* Sources */,
+				493EBA131F94163900E0D7BE /* Frameworks */,
+				493EBA141F94163900E0D7BE /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -107,56 +84,56 @@
 			);
 			name = vers;
 			productName = vers;
-			productReference = 49536B731F5768FD004BA117 /* vers */;
+			productReference = 493EBA161F94163900E0D7BE /* vers */;
 			productType = "com.apple.product-type.tool";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		49536B6B1F5768FD004BA117 /* Project object */ = {
+		493EBA0E1F94163900E0D7BE /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0900;
-				LastUpgradeCheck = 0900;
+				LastSwiftUpdateCheck = 0910;
+				LastUpgradeCheck = 0910;
 				ORGANIZATIONNAME = "Saagar Jha";
 				TargetAttributes = {
-					49536B721F5768FD004BA117 = {
-						CreatedOnToolsVersion = 9.0;
-						LastSwiftMigration = 0900;
+					493EBA151F94163900E0D7BE = {
+						CreatedOnToolsVersion = 9.1;
 						ProvisioningStyle = Automatic;
 					};
 				};
 			};
-			buildConfigurationList = 49536B6E1F5768FD004BA117 /* Build configuration list for PBXProject "vers" */;
+			buildConfigurationList = 493EBA111F94163900E0D7BE /* Build configuration list for PBXProject "vers" */;
 			compatibilityVersion = "Xcode 8.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 			);
-			mainGroup = 49536B6A1F5768FD004BA117;
-			productRefGroup = 49536B741F5768FD004BA117 /* Products */;
+			mainGroup = 493EBA0D1F94163900E0D7BE;
+			productRefGroup = 493EBA171F94163900E0D7BE /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				49536B721F5768FD004BA117 /* vers */,
+				493EBA151F94163900E0D7BE /* vers */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXSourcesBuildPhase section */
-		49536B6F1F5768FD004BA117 /* Sources */ = {
+		493EBA121F94163900E0D7BE /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				49536B771F5768FD004BA117 /* main.swift in Sources */,
+				493EBA211F94312600E0D7BE /* Headers.swift in Sources */,
+				493EBA1A1F94163900E0D7BE /* main.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
-		49536B781F5768FD004BA117 /* Debug */ = {
+		493EBA1B1F94163900E0D7BE /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -213,7 +190,7 @@
 			};
 			name = Debug;
 		};
-		49536B791F5768FD004BA117 /* Release */ = {
+		493EBA1C1F94163900E0D7BE /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -262,41 +239,22 @@
 			};
 			name = Release;
 		};
-		49536B7B1F5768FD004BA117 /* Debug */ = {
+		493EBA1E1F94163900E0D7BE /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 3493UDPWAK;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(SYSTEM_LIBRARY_DIR)/PrivateFrameworks",
-					"/Applications/Xcode-beta.app/Contents/SharedFrameworks",
-					/Applications/Xcode.app/Contents/SharedFrameworks,
-				);
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks /Applications/Xcode-beta.app/Contents/SharedFrameworks /Applications/Xcode.app/Contents/SharedFrameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "vers/vers-Bridging-Header.h";
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
 		};
-		49536B7C1F5768FD004BA117 /* Release */ = {
+		493EBA1F1F94163900E0D7BE /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 3493UDPWAK;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(SYSTEM_LIBRARY_DIR)/PrivateFrameworks",
-					"/Applications/Xcode-beta.app/Contents/SharedFrameworks",
-					/Applications/Xcode.app/Contents/SharedFrameworks,
-				);
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks /Applications/Xcode-beta.app/Contents/SharedFrameworks /Applications/Xcode.app/Contents/SharedFrameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "vers/vers-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
@@ -304,25 +262,25 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		49536B6E1F5768FD004BA117 /* Build configuration list for PBXProject "vers" */ = {
+		493EBA111F94163900E0D7BE /* Build configuration list for PBXProject "vers" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				49536B781F5768FD004BA117 /* Debug */,
-				49536B791F5768FD004BA117 /* Release */,
+				493EBA1B1F94163900E0D7BE /* Debug */,
+				493EBA1C1F94163900E0D7BE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		49536B7A1F5768FD004BA117 /* Build configuration list for PBXNativeTarget "vers" */ = {
+		493EBA1D1F94163900E0D7BE /* Build configuration list for PBXNativeTarget "vers" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				49536B7B1F5768FD004BA117 /* Debug */,
-				49536B7C1F5768FD004BA117 /* Release */,
+				493EBA1E1F94163900E0D7BE /* Debug */,
+				493EBA1F1F94163900E0D7BE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = 49536B6B1F5768FD004BA117 /* Project object */;
+	rootObject = 493EBA0E1F94163900E0D7BE /* Project object */;
 }
