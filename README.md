@@ -1,4 +1,4 @@
-# vers
+# vers [![Build Status](https://travis-ci.org/saagarjha/vers.svg?branch=master)](https://travis-ci.org/saagarjha/vers)
 Prints version information for easy pasting into Bug Reporter. Use it like this:
 ```shell
 $ vers [product]
