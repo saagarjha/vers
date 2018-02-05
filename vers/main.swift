@@ -69,7 +69,7 @@ func Xcode() -> String {
 	let toolsInfo = DVTToolsInfo.toolsInfo()
 	let version = toolsInfo.toolsVersion.name()
 	let build = toolsInfo.toolsBuildVersion.name()
-	return "Xcode Version \(version) \(toolsInfo.isBeta ? "beta\(toolsInfo.toolsBetaVersion != 0 ? " \(toolsInfo.toolsBetaVersion)" : "") " : "")(\(build))"
+	return "Xcode Version \(version) \(toolsInfo.isBeta ? "beta\(!(0...1 ~= toolsInfo.toolsBetaVersion) ? " \(toolsInfo.toolsBetaVersion)" : "") " : "")(\(build))"
 }
 
 guard let flag = CommandLine.arguments.dropFirst().first else {
