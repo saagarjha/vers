@@ -11,14 +11,14 @@ import Foundation
 let _CFCopySystemVersionDictionary: (@convention(c) () -> CFDictionary)! = {
 	let handle = dlopen("/System/Library/Frameworks/CoreFoundation.framework/CoreFoundation", RTLD_NOW)
 	let function = dlsym(handle, "_CFCopySystemVersionDictionary")
-	let signature = (@convention(c) () -> CFDictionary)!.self
+	let signature = (@convention(c) () -> CFDictionary)?.self
 	return unsafeBitCast(function, to: signature)
 }()
 
 let ASI_CopyFormattedSerialNumber: (@convention(c) () -> CFString)! = {
 	let handle = dlopen("/System/Library/PrivateFrameworks/AppleSystemInfo.framework/AppleSystemInfo", RTLD_NOW)
 	let function = dlsym(handle, "ASI_CopyFormattedSerialNumber")
-	let signature = (@convention(c) () -> CFString)!.self
+	let signature = (@convention(c) () -> CFString)?.self
 	return unsafeBitCast(function, to: signature)
 }()
 
@@ -28,7 +28,7 @@ let ASI_CopyFormattedSerialNumber: (@convention(c) () -> CFString)! = {
 
 let SDBuildInfo: SDBuildInfoProtocol.Type! = {
 	dlopen("/System/Library/PrivateFrameworks/Seeding.framework/Seeding", RTLD_NOW)
-	return unsafeBitCast(NSClassFromString("SDBuildInfo"), to: SDBuildInfoProtocol.Type!.self)
+	return unsafeBitCast(NSClassFromString("SDBuildInfo"), to: SDBuildInfoProtocol.Type?.self)
 }()
 
 @objc protocol DVTToolsVersion {
@@ -53,7 +53,7 @@ let DVTToolsInfo: DVTToolsInfoProtocol.Type! = {
 	let capacity = 1000
 	let directory = UnsafeMutablePointer<CChar>.allocate(capacity: capacity)
 	defer {
-		directory.deallocate(capacity: capacity)
+		directory.deallocate()
 	}
 	let size = readlink("/var/db/xcode_select_link", directory, capacity)
 	directory.advanced(by: size).pointee = 0
@@ -72,5 +72,5 @@ let DVTToolsInfo: DVTToolsInfoProtocol.Type! = {
 	}
 
 	dlopen(url.path, RTLD_NOW)
-	return unsafeBitCast(NSClassFromString("DVTToolsInfo"), to: DVTToolsInfoProtocol.Type!.self)
+	return unsafeBitCast(NSClassFromString("DVTToolsInfo"), to: DVTToolsInfoProtocol.Type?.self)
 }()
