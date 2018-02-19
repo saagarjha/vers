@@ -8,6 +8,16 @@
 
 import Foundation
 
+// A generic application that doesn't have a special about window
+func _generic(_ appName: String) -> String {
+	guard let infoDictionary = NSDictionary(contentsOfFile: "/Applications/\(appName).app/Contents/Info.plist") as? [CFString: Any],
+		let shortVersion = infoDictionary["CFBundleShortVersionString" as CFString],
+		let version = infoDictionary[kCFBundleVersionKey] else {
+			return ""
+	}
+	return "Version \(shortVersion) (\(version))"
+}
+
 func Mac() -> String {
 	var serial = ASI_CopyFormattedSerialNumber() as String
 	serial = String(serial.suffix(4))
@@ -78,10 +88,18 @@ guard let flag = CommandLine.arguments.dropFirst().first else {
 
 // Breaks every convention in the book. I'm doing it anyways.
 switch flag {
+case "Calendar":
+	print(_generic("Calendar"))
 case "Mac":
 	print(Mac())
 case "macOS":
 	print(macOS())
+case "Mail":
+	print(_generic("Mail"))
+case "Messages":
+	print(_generic("Messages"))
+case "Preview":
+	print(_generic("Preview"))
 case "Xcode":
 	print(Xcode())
 default:
