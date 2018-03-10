@@ -63,10 +63,10 @@ let DVTToolsInfo: DVTToolsInfoProtocol.Type! = {
 
 	// Redirect stderr since the Objective-C runtime will complain about
 	// duplicate symbols in dlopen
-	let file = open("/dev/null", O_WRONLY)
+	let devNull = open("/dev/null", O_WRONLY)
 	let originalStderr = dup(fileno(stderr))
-	dup2(file, fileno(stderr))
-	close(file)
+	dup2(devNull, fileno(stderr))
+	close(devNull)
 	defer {
 		dup2(originalStderr, fileno(stderr))
 	}
