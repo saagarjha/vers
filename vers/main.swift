@@ -43,6 +43,7 @@ func Mac() -> String {
 }
 
 let macOSVersions = [
+	"10.14": "macOS Mojave",
 	"10.13": "macOS High Sierra",
 	"10.12": "macOS Sierra",
 	"10.11": "OS X El Capitan",
