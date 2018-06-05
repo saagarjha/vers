@@ -11,8 +11,8 @@ import Foundation
 // A generic application that doesn't have a special about window
 func _generic(_ appName: String) -> String {
 	guard let infoDictionary = NSDictionary(contentsOfFile: "/Applications/\(appName).app/Contents/Info.plist") as? [CFString: Any],
-		let shortVersion = infoDictionary["CFBundleShortVersionString" as CFString],
-		let version = infoDictionary[kCFBundleVersionKey] else {
+		let shortVersion = infoDictionary["CFBundleShortVersionString" as CFString] as? String,
+		let version = infoDictionary[kCFBundleVersionKey] as? String else {
 			return ""
 	}
 	return "Version \(shortVersion) (\(version))"
