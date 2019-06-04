@@ -10,7 +10,7 @@ import Foundation
 
 // A generic application that doesn't have a special about window
 func _generic(_ appName: String) -> String {
-	guard let infoDictionary = NSDictionary(contentsOfFile: "/Applications/\(appName).app/Contents/Info.plist") as? [CFString: Any],
+	guard let infoDictionary = NSDictionary(contentsOfFile: "/System/Applications/\(appName).app/Contents/Info.plist") as? [CFString: Any],
 		let shortVersion = infoDictionary["CFBundleShortVersionString" as CFString] as? String,
 		let version = infoDictionary[kCFBundleVersionKey] as? String else {
 			return ""
@@ -43,6 +43,7 @@ func Mac() -> String {
 }
 
 let macOSVersions = [
+	"10.15": "macOS Catalina",
 	"10.14": "macOS Mojave",
 	"10.13": "macOS High Sierra",
 	"10.12": "macOS Sierra",
