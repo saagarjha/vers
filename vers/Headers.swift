@@ -9,14 +9,14 @@
 import Foundation
 
 let _CFCopySystemVersionDictionary: (@convention(c) () -> CFDictionary)! = {
-	let handle = dlopen("/System/Library/Frameworks/CoreFoundation.framework/CoreFoundation", RTLD_NOW)
+	let handle = dlopen("/System/Library/Frameworks/CoreFoundation.framework/CoreFoundation", RTLD_LAZY)
 	let function = dlsym(handle, "_CFCopySystemVersionDictionary")
 	let signature = (@convention(c) () -> CFDictionary)?.self
 	return unsafeBitCast(function, to: signature)
 }()
 
 let ASI_CopyFormattedSerialNumber: (@convention(c) () -> CFString)! = {
-	let handle = dlopen("/System/Library/PrivateFrameworks/AppleSystemInfo.framework/AppleSystemInfo", RTLD_NOW)
+	let handle = dlopen("/System/Library/PrivateFrameworks/AppleSystemInfo.framework/AppleSystemInfo", RTLD_LAZY)
 	let function = dlsym(handle, "ASI_CopyFormattedSerialNumber")
 	let signature = (@convention(c) () -> CFString)?.self
 	return unsafeBitCast(function, to: signature)
@@ -27,7 +27,7 @@ let ASI_CopyFormattedSerialNumber: (@convention(c) () -> CFString)! = {
 }
 
 let SDBuildInfo: SDBuildInfoProtocol.Type! = {
-	dlopen("/System/Library/PrivateFrameworks/Seeding.framework/Seeding", RTLD_NOW)
+	dlopen("/System/Library/PrivateFrameworks/Seeding.framework/Seeding", RTLD_LAZY)
 	return unsafeBitCast(NSClassFromString("SDBuildInfo"), to: SDBuildInfoProtocol.Type?.self)
 }()
 
@@ -69,6 +69,6 @@ let DVTToolsInfo: DVTToolsInfoProtocol.Type! = {
 		dup2(originalStderr, fileno(stderr))
 	}
 
-	dlopen(url.path, RTLD_NOW)
+	dlopen(url.path, RTLD_LAZY)
 	return unsafeBitCast(NSClassFromString("DVTToolsInfo"), to: DVTToolsInfoProtocol.Type?.self)
 }()
