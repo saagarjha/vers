@@ -48,18 +48,16 @@ let SDBuildInfo: SDBuildInfoProtocol.Type! = {
 }
 
 let DVTToolsInfo: DVTToolsInfoProtocol.Type! = {
-	// Find the current path that xcode-select uses; this is whatever
-	// /var/db/xcode_select_link is symlinked to
-	let capacity = 1000
-	let directory = UnsafeMutablePointer<CChar>.allocate(capacity: capacity)
-	defer {
-		directory.deallocate()
-	}
-	let size = readlink("/var/db/xcode_select_link", directory, capacity)
-	directory.advanced(by: size).pointee = 0
-
-	// Navigate the Xcode bundle to find DVTFoundation
-	let url = URL(fileURLWithPath: String(cString: directory)).deletingLastPathComponent().appendingPathComponent("SharedFrameworks").appendingPathComponent("DVTFoundation.framework").appendingPathComponent("DVTFoundation")
+	// Use the xcode_select_link symlink…
+	let url = URL(fileURLWithPath: "/var/db/xcode_select_link")
+		// …to find the Xcode developer directory. Then,
+		.resolvingSymlinksInPath()
+		// delete the "Developer" part,
+		.deletingLastPathComponent()
+		// and add SharedFrameworks/DVTFoundation.framework/DVTFoundation.
+		.appendingPathComponent("SharedFrameworks")
+		.appendingPathComponent("DVTFoundation.framework")
+		.appendingPathComponent("DVTFoundation")
 
 	// Redirect stderr since the Objective-C runtime will complain about
 	// duplicate symbols in dlopen
