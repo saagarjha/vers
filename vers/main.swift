@@ -66,13 +66,25 @@ func majorVersion(ofVersion version: String) -> String {
 	return version.split(separator: ".")[0..<2].joined(separator: ".")
 }
 
+func names(forVersion version: String) -> (String, String)? {
+	if let name = macOSVersions[majorVersion(ofVersion: version)] {
+		return (name, version)
+	} else {
+		guard let name = SystemDesktopAppearance?.OSName,
+			  let version = SystemDesktopAppearance?.OSVersion else {
+			return nil
+		}
+		return (name, version)
+	}
+}
+
 func macOS() -> String {
 	let versionDictionary = _CFCopySystemVersionDictionary() as NSDictionary
-	guard let version = versionDictionary["ProductVersion"] as? String,
-		let build = versionDictionary["ProductBuildVersion"] as? String,
-		let name = macOSVersions[majorVersion(ofVersion: version)] else {
-			return ""
+	guard let (name, version) = (versionDictionary["ProductVersion"] as? String).flatMap(names(forVersion:)),
+		  let build = versionDictionary["ProductBuildVersion"] else {
+		return ""
 	}
+
 	let isBeta = SDBuildInfo.currentBuildIsSeed()
 	return "\(name) \(version) \(isBeta ? "Beta " : "")(\(build))"
 }

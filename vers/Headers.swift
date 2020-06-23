@@ -72,3 +72,13 @@ let DVTToolsInfo: DVTToolsInfoProtocol.Type! = {
 	dlopen(url.path, RTLD_LAZY)
 	return unsafeBitCast(NSClassFromString("DVTToolsInfo"), to: DVTToolsInfoProtocol.Type?.self)
 }()
+
+@objc protocol SystemDesktopAppearanceProtocol {
+	static var OSName: String { get }
+	static var OSVersion: String { get }
+}
+
+let SystemDesktopAppearance: SystemDesktopAppearanceProtocol.Type? = {
+	dlopen("/System/Library/PrivateFrameworks/SystemDesktopAppearance.framework/SystemDesktopAppearance", RTLD_LAZY)
+	return unsafeBitCast(NSClassFromString("SystemDesktopAppearance"), to: SystemDesktopAppearanceProtocol.Type?.self)
+}()
