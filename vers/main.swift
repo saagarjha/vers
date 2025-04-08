@@ -12,8 +12,9 @@ import Foundation
 func _generic(_ appName: String) -> String {
 	guard let infoDictionary = NSDictionary(contentsOfFile: "/System/Applications/\(appName).app/Contents/Info.plist") as? [CFString: Any],
 		let shortVersion = infoDictionary["CFBundleShortVersionString" as CFString] as? String,
-		let version = infoDictionary[kCFBundleVersionKey] as? String else {
-			return ""
+		let version = infoDictionary[kCFBundleVersionKey] as? String
+	else {
+		return ""
 	}
 	return "Version \(shortVersion) (\(version))"
 }
@@ -51,7 +52,8 @@ func names(forVersion version: String) -> (String, String)? {
 		return (name, version)
 	} else {
 		guard let name = SystemDesktopAppearance?.OSName,
-			  let version = SystemDesktopAppearance?.OSVersion else {
+			let version = SystemDesktopAppearance?.OSVersion
+		else {
 			return nil
 		}
 		return (name, version)
@@ -61,7 +63,8 @@ func names(forVersion version: String) -> (String, String)? {
 func macOS() -> String {
 	let versionDictionary = _CFCopySystemVersionDictionary() as NSDictionary
 	guard let (name, version) = (versionDictionary["ProductVersion"] as? String).flatMap(names(forVersion:)),
-		  let build = versionDictionary["ProductBuildVersion"] else {
+		let build = versionDictionary["ProductBuildVersion"]
+	else {
 		return ""
 	}
 
@@ -88,20 +91,20 @@ guard let flag = CommandLine.arguments.dropFirst().first else {
 
 // Breaks every convention in the book. I'm doing it anyways.
 switch flag {
-case "Calendar":
-	print(_generic("Calendar"))
-case "Mac":
-	print(Mac())
-case "macOS":
-	print(macOS())
-case "Mail":
-	print(_generic("Mail"))
-case "Messages":
-	print(_generic("Messages"))
-case "Preview":
-	print(_generic("Preview"))
-case "Xcode":
-	print(Xcode())
-default:
-	print()
+	case "Calendar":
+		print(_generic("Calendar"))
+	case "Mac":
+		print(Mac())
+	case "macOS":
+		print(macOS())
+	case "Mail":
+		print(_generic("Mail"))
+	case "Messages":
+		print(_generic("Messages"))
+	case "Preview":
+		print(_generic("Preview"))
+	case "Xcode":
+		print(Xcode())
+	default:
+		print()
 }
