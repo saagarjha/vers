@@ -33,6 +33,8 @@ let SDBuildInfo: SDBuildInfoProtocol.Type! = {
 
 @objc protocol DVTToolsVersion {
 	func name() -> String
+	static func setCurrentBetaVersionFromPlistFile(_: URL)
+	static var currentVersionBetaString: String? { get }
 }
 
 @objc protocol DVTBuildVersion {
@@ -41,7 +43,6 @@ let SDBuildInfo: SDBuildInfoProtocol.Type! = {
 
 @objc protocol DVTToolsInfoProtocol {
 	var toolsBetaVersion: Int { get }
-	var isBeta: Bool { get }
 	var toolsBuildVersion: DVTBuildVersion { get }
 	var toolsVersion: DVTToolsVersion { get }
 	static func toolsInfo() -> DVTToolsInfoProtocol
@@ -49,12 +50,14 @@ let SDBuildInfo: SDBuildInfoProtocol.Type! = {
 
 let DVTToolsInfo: DVTToolsInfoProtocol.Type! = {
 	// Use the xcode_select_link symlink…
-	let url = URL(fileURLWithPath: "/var/db/xcode_select_link")
+	let XcodeContents = URL(fileURLWithPath: "/var/select/developer_dir")
 		// …to find the Xcode developer directory. Then,
 		.resolvingSymlinksInPath()
-		// delete the "Developer" part,
+		// delete the "Developer" part.
 		.deletingLastPathComponent()
-		// and add SharedFrameworks/DVTFoundation.framework/DVTFoundation.
+
+	let url =
+		XcodeContents
 		.appendingPathComponent("SharedFrameworks")
 		.appendingPathComponent("DVTFoundation.framework")
 		.appendingPathComponent("DVTFoundation")
@@ -70,6 +73,11 @@ let DVTToolsInfo: DVTToolsInfoProtocol.Type! = {
 	}
 
 	dlopen(url.path, RTLD_LAZY)
+	unsafeBitCast(NSClassFromString("DVTToolsVersion"), to: DVTToolsVersion.Type?.self)!.setCurrentBetaVersionFromPlistFile(
+		XcodeContents
+			.appendingPathComponent("Resources")
+			.appendingPathComponent("BetaVersion.plist"))
+
 	return unsafeBitCast(NSClassFromString("DVTToolsInfo"), to: DVTToolsInfoProtocol.Type?.self)
 }()
 
