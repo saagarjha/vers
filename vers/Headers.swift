@@ -15,9 +15,9 @@ let _CFCopySystemVersionDictionary: (@convention(c) () -> CFDictionary)! = {
 	return unsafeBitCast(function, to: signature)
 }()
 
-let ASI_CopyFormattedSerialNumber: (@convention(c) () -> CFString)! = {
+let ASI_GetLocalizedMarketingName: (@convention(c) () -> CFString)! = {
 	let handle = dlopen("/System/Library/PrivateFrameworks/AppleSystemInfo.framework/AppleSystemInfo", RTLD_LAZY)
-	let function = dlsym(handle, "ASI_CopyFormattedSerialNumber")
+	let function = dlsym(handle, "ASI_GetLocalizedMarketingName")
 	let signature = (@convention(c) () -> CFString)?.self
 	return unsafeBitCast(function, to: signature)
 }()

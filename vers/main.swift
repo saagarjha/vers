@@ -19,27 +19,7 @@ func _generic(_ appName: String) -> String {
 }
 
 func Mac() -> String {
-	var serial = ASI_CopyFormattedSerialNumber() as String
-	serial = String(serial.suffix(4))
-	guard let url = URL(string: "http://support-sp.apple.com/sp/product?cc=\(serial)&lang=en_US") else {
-		return ""
-	}
-	let semaphore = DispatchSemaphore(value: 0)
-	var model = ""
-	URLSession.shared.dataTask(with: url) { data, response, error in
-		// H̸̡̪̯ͨ͊̽̅̾̎Ȩ̬̩̾͛ͪ̈́̀́͘ ̶̧̨̱̹̭̯ͧ̾ͬC̷̙̲̝͖ͭ̏ͥͮ͟Oͮ͏̮̪̝͍M̲̖͊̒ͪͩͬ̚̚͜Ȇ̴̟̟͙̞ͩ͌͝S̨̥̫͎̭ͯ̿̔̀ͅ
-		guard let data = data,
-			let string = String(data: data, encoding: .utf8),
-			let range1 = string.range(of: "<configCode>"),
-			let range2 = string.range(of: "</configCode>") else {
-				return
-		}
-
-		model = String(string[range1.upperBound..<range2.lowerBound])
-		semaphore.signal()
-	}.resume()
-	semaphore.wait()
-	return model
+	return ASI_GetLocalizedMarketingName() as String
 }
 
 let macOSVersions = [
